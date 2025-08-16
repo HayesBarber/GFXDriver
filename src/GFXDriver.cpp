@@ -18,9 +18,15 @@ GFXDriver::GFXDriver() : _onTouch(nullptr) {
       0 /* bounce_buffer_size_px */);
 
   _gfx = new Arduino_RGB_Display(
-      480 /* width */, 480 /* height */, _rgbpanel, 0 /* rotation */,
-      true /* auto_flush */, _bus, GFX_NOT_DEFINED /* RST */,
+      DISPLAY_WIDTH /* width */, DISPLAY_HEIGHT /* height */, _rgbpanel,
+      0 /* rotation */, true /* auto_flush */, _bus, GFX_NOT_DEFINED /* RST */,
       st7701_type5_init_operations, sizeof(st7701_type5_init_operations));
 }
 
-void GFXDriver::init(void (*onTouch)()) {}
+void GFXDriver::init(void (*onTouch)()) {
+  _onTouch = onTouch;
+  Wire.begin(I2C_SDA_PIN, I2C_SCL_PIN);
+  _gfx->begin();
+  _gfx->fillScreen(BLACK);
+  _gfx->setTextColor(WHITE);
+}
