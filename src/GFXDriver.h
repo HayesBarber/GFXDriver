@@ -48,6 +48,8 @@ public:
   void drawColors(const std::vector<uint16_t> &colors);
   void drawColors(const std::vector<uint16_t> &colors, Third third);
   uint16_t hexToColor(const String &hexString);
+  void drawPowerSymbol();
+  void drawPowerSymbol(Third third);
 
 private:
   void (*_onTouch)();

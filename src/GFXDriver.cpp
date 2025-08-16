@@ -128,3 +128,9 @@ uint16_t GFXDriver::hexToColor(const String &hexString) {
 
   return _gfx->color565(r, g, b);
 }
+
+void GFXDriver::drawPowerSymbol() { drawPowerSymbol(LOWER_THIRD); }
+
+void GFXDriver::drawPowerSymbol(Third third) {
+  ThirdCenter center = THIRD_CENTERS[third];
+}
