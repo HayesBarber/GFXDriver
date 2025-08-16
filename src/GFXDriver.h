@@ -11,6 +11,8 @@
 #define DISPLAY_HEIGHT 480
 #define DEBOUNCE_DELAY_MS 300
 
+enum Third { UPPER_THIRD, MIDDLE_THIRD, LOWER_THIRD };
+
 class GFXDriver {
 public:
   GFXDriver();
