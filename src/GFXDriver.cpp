@@ -134,7 +134,8 @@ void GFXDriver::drawPowerSymbol() { drawPowerSymbol(LOWER_THIRD); }
 void GFXDriver::drawPowerSymbol(Third third) {
   clearThird(third);
   static int16_t radius = 20;
-  static int16_t circleThickness = radius - 4;
+  static int16_t lineThickness = 4;
+  static int16_t circleThickness = radius - lineThickness;
 
   ThirdCenter center = THIRD_CENTERS[third];
 
