@@ -52,6 +52,7 @@ public:
   uint16_t hexToColor(const String &hexString);
   void drawPowerSymbol();
   void drawPowerSymbol(Third third);
+  void setTextSize(TextSize size);
 
 private:
   void (*_onTouch)();

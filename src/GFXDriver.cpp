@@ -1,5 +1,8 @@
 #include "GFXDriver.h"
 #include "font/FreeSansBold18pt7b.h"
+#include "font/FreeSansBold24pt7b.h"
+#include "font/FreeSansBold30pt7b.h"
+#include "font/FreeSansBold42pt7b.h"
 
 GFXDriver::GFXDriver() : _onTouch(nullptr) {
   _bus = new Arduino_SWSPI(GFX_NOT_DEFINED /* DC */, 1 /* CS */, 46 /* SCK */,
@@ -152,4 +155,21 @@ void GFXDriver::drawPowerSymbol(Third third) {
   _gfx->fillRoundRect(center.x - (stemThickness / 2),
                       center.y - (outerCircleRadius + 6), stemThickness,
                       outerCircleRadius + 4, stemCornerRadius, WHITE);
+}
+
+void GFXDriver::setTextSize(TextSize size) {
+  switch (size) {
+  case S:
+    _gfx->setFont(&FreeSansBold18pt7b);
+    break;
+  case M:
+    _gfx->setFont(&FreeSansBold24pt7b);
+    break;
+  case L:
+    _gfx->setFont(&FreeSansBold30pt7b);
+    break;
+  case XL:
+    _gfx->setFont(&FreeSansBold42pt7b);
+    break;
+  }
 }
