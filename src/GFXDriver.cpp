@@ -51,14 +51,18 @@ void GFXDriver::writeText(String text) {
 
 void GFXDriver::loop() {
   static unsigned long lastTapTime = 0;
-  unsigned long currentTime = millis();
 
   byte data_raw[7];
   i2cRead(0x15, 0x02, data_raw, 7);
 
   int event = data_raw[1] >> 6;
 
-  if (event == 2 && currentTime - lastTapTime >= DEBOUNCE_DELAY_MS) {
+  if (event != 2) {
+    return;
+  }
+
+  unsigned long currentTime = millis();
+  if (currentTime - lastTapTime >= DEBOUNCE_DELAY_MS) {
     lastTapTime = currentTime;
     _onTouch();
   }
