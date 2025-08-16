@@ -1,5 +1,4 @@
 #pragma once
-
 #include <Arduino_GFX_Library.h>
 
 const uint8_t FreeSansBold18pt7bBitmaps[] PROGMEM = {
