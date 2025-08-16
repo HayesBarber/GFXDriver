@@ -19,6 +19,7 @@ public:
   void loop();
   void off();
   void drawColors(const std::vector<uint16_t> &colors);
+  uint16_t hexToColor(const String &hexString);
 
 private:
   void (*_onTouch)();

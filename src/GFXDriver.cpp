@@ -99,3 +99,16 @@ void GFXDriver::drawColors(const std::vector<uint16_t> &colors) {
     _gfx->fillRoundRect(startX, y, cellWidth, cellHeight, radius, color);
   }
 }
+
+uint16_t GFXDriver::hexToColor(const String &hexString) {
+  if (hexString.length() != 6) {
+    return 0;
+  }
+
+  long hexValue = strtol(hexString.c_str(), nullptr, 16);
+  uint8_t r = (hexValue >> 16) & 0xFF;
+  uint8_t g = (hexValue >> 8) & 0xFF;
+  uint8_t b = hexValue & 0xFF;
+
+  return _gfx->color565(r, g, b);
+}
