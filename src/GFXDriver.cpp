@@ -40,7 +40,7 @@ void GFXDriver::writeText(String text) {
   _gfx->getTextBounds(text, 0, 0, &x1, &y1, &textWidth, &textHeight);
 
   int16_t x = (DISPLAY_WIDTH - textWidth) / 2;
-  int16_t y = DISPLAY_HEIGHT / 2;
+  int16_t y = (DISPLAY_HEIGHT / 2) + 15;
 
   _gfx->setCursor(x, y);
   _gfx->println(text);
