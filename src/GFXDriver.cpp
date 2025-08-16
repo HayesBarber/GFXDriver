@@ -1,4 +1,5 @@
 #include "GFXDriver.h"
+#include "font/FreeSansBold18pt7b.h"
 
 GFXDriver::GFXDriver() : _onTouch(nullptr) {
   _bus = new Arduino_SWSPI(GFX_NOT_DEFINED /* DC */, 1 /* CS */, 46 /* SCK */,
@@ -26,7 +27,7 @@ void GFXDriver::init(void (*onTouch)()) {
   _gfx->begin();
   _gfx->fillScreen(BLACK);
   _gfx->setTextColor(WHITE);
-  _gfx->setTextSize(4);
+  _gfx->setFont(&FreeSansBold18pt7b);
 }
 
 void GFXDriver::writeText(String text) { writeText(text, MIDDLE_THIRD); }
