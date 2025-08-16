@@ -30,7 +30,6 @@ void GFXDriver::init(void (*onTouch)()) {
   _gfx->begin();
   _gfx->fillScreen(BLACK);
   _gfx->setTextColor(WHITE);
-  _gfx->setFont(&FreeSansBold18pt7b);
 }
 
 void GFXDriver::writeText(String text) { writeText(text, MIDDLE_THIRD, L); }
