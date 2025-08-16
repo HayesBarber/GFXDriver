@@ -52,7 +52,6 @@ public:
   uint16_t hexToColor(const String &hexString);
   void drawPowerSymbol();
   void drawPowerSymbol(Third third);
-  void setTextSize(TextSize size);
 
 private:
   void (*_onTouch)();
@@ -62,4 +61,5 @@ private:
 
   void i2cRead(uint16_t addr, uint8_t reg_addr, uint8_t *reg_data,
                uint32_t length);
+  void setTextSize(TextSize size);
 };
