@@ -36,6 +36,8 @@ static const ThirdCorner THIRD_TOPLEFTS[] = {
     {0, THIRD_HEIGHT * 2} // LOWER_THIRD
 };
 
+enum TextSize { S, L };
+
 class GFXDriver {
 public:
   GFXDriver();
