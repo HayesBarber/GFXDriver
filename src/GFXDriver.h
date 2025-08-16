@@ -38,21 +38,105 @@ static const ThirdCorner THIRD_TOPLEFTS[] = {
 
 enum TextSize { S, M, L, XL };
 
+/**
+ * @class GFXDriver
+ * @brief Manages display output and touch input.
+ *
+ * Provides methods to initialize the display, write text with various sizes and
+ * positions, clear sections of the display, draw color blocks, convert hex
+ * color strings, and draw a power symbol.
+ */
 class GFXDriver {
 public:
+  /**
+   * @brief Constructs a new GFXDriver instance.
+   */
   GFXDriver();
+
+  /**
+   * @brief Initializes the display and sets up the touch callback.
+   * @param onTouch Function pointer to be called on touch events.
+   */
   void init(void (*onTouch)());
+
+  /**
+   * @brief Writes text centered on the display with default size.
+   * @param text The string to be displayed.
+   */
   void writeText(String text);
+
+  /**
+   * @brief Writes text centered within a specified third of the display with
+   * default size.
+   * @param text The string to be displayed.
+   * @param third The vertical third of the display to center the text in.
+   */
   void writeText(String text, Third third);
+
+  /**
+   * @brief Writes text centered on the display with a specified text size.
+   * @param text The string to be displayed.
+   * @param size The size of the text to render.
+   */
   void writeText(String text, TextSize size);
+
+  /**
+   * @brief Writes text centered within a specified third of the display with a
+   * specified text size.
+   * @param text The string to be displayed.
+   * @param third The vertical third of the display to center the text in.
+   * @param size The size of the text to render.
+   */
   void writeText(String text, Third third, TextSize size);
+
+  /**
+   * @brief Handles periodic tasks, such as touch event processing.
+   */
   void loop();
+
+  /**
+   * @brief Fills the screen to black.
+   */
   void off();
+
+  /**
+   * @brief Clears the contents of a specified third of the display.
+   * @param third The vertical third of the display to clear.
+   */
   void clearThird(Third third);
+
+  /**
+   * @brief Draws a sequence of color blocks across the entire display.
+   * @param colors Vector of color values to draw.
+   */
   void drawColors(const std::vector<uint16_t> &colors);
+
+  /**
+   * @brief Draws a sequence of color blocks within a specified third of the
+   * display.
+   * @param colors Vector of color values to draw.
+   * @param third The vertical third of the display to draw the colors in.
+   */
   void drawColors(const std::vector<uint16_t> &colors, Third third);
+
+  /**
+   * @brief Converts a hex color string to a color value. The string should not
+   * contain a leading "#".
+   * @param hexString The hex color string (e.g., "FF0000").
+   * @return The color representation as an int.
+   */
   uint16_t hexToColor(const String &hexString);
+
+  /**
+   * @brief Draws a power symbol centered on the display.
+   */
   void drawPowerSymbol();
+
+  /**
+   * @brief Draws a power symbol centered within a specified third of the
+   * display.
+   * @param third The vertical third of the display to draw the symbol in.
+   */
   void drawPowerSymbol(Third third);
 
 private:
