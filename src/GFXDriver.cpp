@@ -48,3 +48,30 @@ void GFXDriver::writeText(String text) {
   _gfx->setCursor(x, y);
   _gfx->println(text);
 }
+
+void GFXDriver::loop() {
+  static unsigned long lastTapTime = 0;
+  unsigned long currentTime = millis();
+
+  byte data_raw[7];
+  i2cRead(0x15, 0x02, data_raw, 7);
+
+  int event = data_raw[1] >> 6;
+
+  if (event == 2 && currentTime - lastTapTime >= DEBOUNCE_DELAY_MS) {
+    lastTapTime = currentTime;
+    _onTouch();
+  }
+}
+
+void GFXDriver::i2cRead(uint16_t addr, uint8_t reg_addr, uint8_t *reg_data,
+                        uint32_t length) {
+  Wire.beginTransmission(addr);
+  Wire.write(reg_addr);
+  if (Wire.endTransmission(true))
+    return;
+  Wire.requestFrom(addr, length, true);
+  for (int i = 0; i < length; i++) {
+    *reg_data++ = Wire.read();
+  }
+}
