@@ -80,9 +80,22 @@ void GFXDriver::i2cRead(uint16_t addr, uint8_t reg_addr, uint8_t *reg_data,
 void GFXDriver::off() { _gfx->fillScreen(BLACK); }
 
 void GFXDriver::drawColors(const std::vector<uint16_t> &colors) {
-  static uint8_t cellWidth = 50;
-  static uint8_t spacing = 20;
+  static int16_t cellWidth = 50;
+  static int16_t cellHeight = 30;
+  static int16_t spacing = 20;
+  static int16_t radius = 5;
 
   int16_t totalWidth =
       (colors.size() * cellWidth) + ((colors.size() - 1) * spacing);
+
+  int16_t x = (DISPLAY_WIDTH - totalWidth) / 2;
+  int16_t y = (DISPLAY_HEIGHT / 2) + 15;
+
+  for (int i = 0; i < colors.size(); i++) {
+    uint16_t color = colors[i];
+
+    int16_t startX = x + (i * (cellWidth + spacing));
+
+    _gfx->fillRoundRect(startX, y, cellWidth, cellHeight, radius, color);
+  }
 }
