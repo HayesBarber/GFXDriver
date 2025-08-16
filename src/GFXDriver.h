@@ -32,6 +32,7 @@ public:
   void writeText(String text, Third third);
   void loop();
   void off();
+  void clearThird(Third third);
   void drawColors(const std::vector<uint16_t> &colors);
   void drawColors(const std::vector<uint16_t> &colors, Third third);
   uint16_t hexToColor(const String &hexString);
@@ -44,5 +45,4 @@ private:
 
   void i2cRead(uint16_t addr, uint8_t reg_addr, uint8_t *reg_data,
                uint32_t length);
-  void clearThird(Third third);
 };
