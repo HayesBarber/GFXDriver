@@ -36,12 +36,16 @@ static const ThirdCorner THIRD_TOPLEFTS[] = {
     {0, THIRD_HEIGHT * 2} // LOWER_THIRD
 };
 
+enum TextSize { S, M, L, XL };
+
 class GFXDriver {
 public:
   GFXDriver();
   void init(void (*onTouch)());
   void writeText(String text);
   void writeText(String text, Third third);
+  void writeText(String text, TextSize size);
+  void writeText(String text, Third third, TextSize size);
   void loop();
   void off();
   void clearThird(Third third);
@@ -59,4 +63,5 @@ private:
 
   void i2cRead(uint16_t addr, uint8_t reg_addr, uint8_t *reg_data,
                uint32_t length);
+  void setTextSize(TextSize size);
 };

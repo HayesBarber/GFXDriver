@@ -1,4 +1,8 @@
 #include "GFXDriver.h"
+#include "font/FreeSansBold18pt7b.h"
+#include "font/FreeSansBold24pt7b.h"
+#include "font/FreeSansBold30pt7b.h"
+#include "font/FreeSansBold42pt7b.h"
 
 GFXDriver::GFXDriver() : _onTouch(nullptr) {
   _bus = new Arduino_SWSPI(GFX_NOT_DEFINED /* DC */, 1 /* CS */, 46 /* SCK */,
@@ -26,12 +30,20 @@ void GFXDriver::init(void (*onTouch)()) {
   _gfx->begin();
   _gfx->fillScreen(BLACK);
   _gfx->setTextColor(WHITE);
-  _gfx->setTextSize(4);
 }
 
-void GFXDriver::writeText(String text) { writeText(text, MIDDLE_THIRD); }
+void GFXDriver::writeText(String text) { writeText(text, MIDDLE_THIRD, L); }
 
 void GFXDriver::writeText(String text, Third third) {
+  writeText(text, third, L);
+}
+
+void GFXDriver::writeText(String text, TextSize size) {
+  writeText(text, MIDDLE_THIRD, size);
+}
+
+void GFXDriver::writeText(String text, Third third, TextSize size) {
+  setTextSize(size);
   clearThird(third);
   if (text.length() == 0) {
     return;
@@ -44,7 +56,7 @@ void GFXDriver::writeText(String text, Third third) {
   ThirdCenter center = THIRD_CENTERS[third];
 
   int16_t x = (DISPLAY_WIDTH - textWidth) / 2;
-  int16_t y = center.y;
+  int16_t y = center.y + 15;
 
   _gfx->setCursor(x, y);
   _gfx->println(text);
@@ -151,4 +163,21 @@ void GFXDriver::drawPowerSymbol(Third third) {
   _gfx->fillRoundRect(center.x - (stemThickness / 2),
                       center.y - (outerCircleRadius + 6), stemThickness,
                       outerCircleRadius + 4, stemCornerRadius, WHITE);
+}
+
+void GFXDriver::setTextSize(TextSize size) {
+  switch (size) {
+  case S:
+    _gfx->setFont(&FreeSansBold18pt7b);
+    break;
+  case M:
+    _gfx->setFont(&FreeSansBold24pt7b);
+    break;
+  case L:
+    _gfx->setFont(&FreeSansBold30pt7b);
+    break;
+  case XL:
+    _gfx->setFont(&FreeSansBold42pt7b);
+    break;
+  }
 }
