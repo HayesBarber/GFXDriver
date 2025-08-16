@@ -33,9 +33,18 @@ void GFXDriver::init(void (*onTouch)()) {
   _gfx->setFont(&FreeSansBold18pt7b);
 }
 
-void GFXDriver::writeText(String text) { writeText(text, MIDDLE_THIRD); }
+void GFXDriver::writeText(String text) { writeText(text, MIDDLE_THIRD, L); }
 
 void GFXDriver::writeText(String text, Third third) {
+  writeText(text, third, L);
+}
+
+void GFXDriver::writeText(String text, TextSize size) {
+  writeText(text, MIDDLE_THIRD, size);
+}
+
+void GFXDriver::writeText(String text, Third third, TextSize size) {
+  setTextSize(size);
   clearThird(third);
   if (text.length() == 0) {
     return;
