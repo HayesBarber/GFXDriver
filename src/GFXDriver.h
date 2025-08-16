@@ -3,6 +3,7 @@
 #include <Arduino.h>
 #include <Arduino_GFX_Library.h>
 #include <Wire.h>
+#include <vector>
 
 #define I2C_SDA_PIN 17
 #define I2C_SCL_PIN 18
@@ -17,6 +18,7 @@ public:
   void writeText(String text);
   void loop();
   void off();
+  void drawColors(const std::vector<uint16_t> &colors);
 
 private:
   void (*_onTouch)();
