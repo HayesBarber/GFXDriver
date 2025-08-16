@@ -1,0 +1,12 @@
+{
+  "name": "GFXDriver",
+  "version": "0.1.0",
+  "description": "Graphics driver.",
+  "frameworks": "arduino",
+  "license": "MIT",
+  "platforms": ["espressif32"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HayesBarber/GFXDriver.git"
+  }
+}
