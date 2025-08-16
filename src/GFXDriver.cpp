@@ -132,5 +132,12 @@ uint16_t GFXDriver::hexToColor(const String &hexString) {
 void GFXDriver::drawPowerSymbol() { drawPowerSymbol(LOWER_THIRD); }
 
 void GFXDriver::drawPowerSymbol(Third third) {
+  clearThird(third);
+  static int16_t radius = 40;
+  static int16_t circleThickness = radius - 5;
+
   ThirdCenter center = THIRD_CENTERS[third];
+
+  _gfx->fillCircle(center.x, center.y, radius, WHITE);
+  _gfx->fillCircle(center.x, center.y, circleThickness, BLACK);
 }
