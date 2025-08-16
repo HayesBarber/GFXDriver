@@ -107,6 +107,7 @@ void GFXDriver::drawColors(const std::vector<uint16_t> &colors) {
 }
 
 void GFXDriver::drawColors(const std::vector<uint16_t> &colors, Third third) {
+  clearThird(third);
   static int16_t cellWidth = 50;
   static int16_t cellHeight = 30;
   static int16_t spacing = 20;
