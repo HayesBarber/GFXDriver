@@ -16,6 +16,7 @@ public:
   void init(void (*onTouch)());
   void writeText(String text);
   void loop();
+  void off();
 
 private:
   void (*_onTouch)();

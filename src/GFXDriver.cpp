@@ -79,3 +79,5 @@ void GFXDriver::i2cRead(uint16_t addr, uint8_t reg_addr, uint8_t *reg_data,
     *reg_data++ = Wire.read();
   }
 }
+
+void GFXDriver::off() { _gfx->fillScreen(BLACK); }
