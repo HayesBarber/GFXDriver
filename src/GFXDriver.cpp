@@ -29,6 +29,7 @@ void GFXDriver::init(void (*onTouch)()) {
   _gfx->begin();
   _gfx->fillScreen(BLACK);
   _gfx->setTextColor(WHITE);
+  _gfx->setTextSize(4);
 }
 
 void GFXDriver::writeText(String text) {
