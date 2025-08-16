@@ -57,7 +57,7 @@ void GFXDriver::writeText(String text, Third third, TextSize size) {
   ThirdCenter center = THIRD_CENTERS[third];
 
   int16_t x = (DISPLAY_WIDTH - textWidth) / 2;
-  int16_t y = center.y;
+  int16_t y = center.y + 15;
 
   _gfx->setCursor(x, y);
   _gfx->println(text);
