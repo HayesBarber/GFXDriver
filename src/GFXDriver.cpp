@@ -148,5 +148,5 @@ void GFXDriver::drawPowerSymbol(Third third) {
                  center.y - (radius + padding), lineThickness + padding,
                  radius + padding, BLACK);
   _gfx->fillRoundRect(center.x - (lineThickness / 2), center.y - (radius + 6),
-                      lineThickness, radius, lineRadius, WHITE);
+                      lineThickness, radius + 6, lineRadius, WHITE);
 }
