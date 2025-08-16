@@ -33,6 +33,7 @@ public:
   void loop();
   void off();
   void drawColors(const std::vector<uint16_t> &colors);
+  void drawColors(const std::vector<uint16_t> &colors, Third third);
   uint16_t hexToColor(const String &hexString);
 
 private:

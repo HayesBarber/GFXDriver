@@ -103,6 +103,10 @@ void GFXDriver::clearThird(Third third) {
 void GFXDriver::off() { _gfx->fillScreen(BLACK); }
 
 void GFXDriver::drawColors(const std::vector<uint16_t> &colors) {
+  drawColors(colors, MIDDLE_THIRD);
+}
+
+void GFXDriver::drawColors(const std::vector<uint16_t> &colors, Third third) {
   static int16_t cellWidth = 50;
   static int16_t cellHeight = 30;
   static int16_t spacing = 20;
@@ -111,8 +115,10 @@ void GFXDriver::drawColors(const std::vector<uint16_t> &colors) {
   int16_t totalWidth =
       (colors.size() * cellWidth) + ((colors.size() - 1) * spacing);
 
+  ThirdCenter center = THIRD_CENTERS[third];
+
   int16_t x = (DISPLAY_WIDTH - totalWidth) / 2;
-  int16_t y = (DISPLAY_HEIGHT / 2) + 15;
+  int16_t y = center.y;
 
   for (int i = 0; i < colors.size(); i++) {
     uint16_t color = colors[i];
