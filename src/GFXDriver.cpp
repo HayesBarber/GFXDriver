@@ -82,22 +82,8 @@ void GFXDriver::i2cRead(uint16_t addr, uint8_t reg_addr, uint8_t *reg_data,
 }
 
 void GFXDriver::clearThird(Third third) {
-  static uint16_t thirdHeight = DISPLAY_HEIGHT / 3;
-  uint16_t startY = 0;
-
-  switch (third) {
-  case UPPER_THIRD:
-    startY = 0;
-    break;
-  case MIDDLE_THIRD:
-    startY = thirdHeight;
-    break;
-  case LOWER_THIRD:
-    startY = thirdHeight * 2;
-    break;
-  }
-
-  _gfx->fillRect(0, startY, DISPLAY_WIDTH, thirdHeight, BLACK);
+  ThirdCorner corner = THIRD_TOPLEFTS[third];
+  _gfx->fillRect(corner.x, corner.y, DISPLAY_WIDTH, THIRD_HEIGHT, BLACK);
 }
 
 void GFXDriver::off() { _gfx->fillScreen(BLACK); }
