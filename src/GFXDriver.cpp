@@ -30,3 +30,20 @@ void GFXDriver::init(void (*onTouch)()) {
   _gfx->fillScreen(BLACK);
   _gfx->setTextColor(WHITE);
 }
+
+void GFXDriver::writeText(String text) {
+  _gfx->fillScreen(BLACK);
+  if (text.length() == 0) {
+    return;
+  }
+
+  int16_t x1, y1;
+  uint16_t textWidth, textHeight;
+  _gfx->getTextBounds(text, 0, 0, &x1, &y1, &textWidth, &textHeight);
+
+  int16_t x = (DISPLAY_WIDTH - textWidth) / 2;
+  int16_t y = DISPLAY_HEIGHT / 2;
+
+  _gfx->setCursor(x, y);
+  _gfx->println(text);
+}

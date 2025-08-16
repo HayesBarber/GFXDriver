@@ -14,6 +14,7 @@ class GFXDriver {
 public:
   GFXDriver();
   void init(void (*onTouch)());
+  void writeText(String text);
 
 private:
   void (*_onTouch)();
