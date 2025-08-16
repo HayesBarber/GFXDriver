@@ -79,4 +79,10 @@ void GFXDriver::i2cRead(uint16_t addr, uint8_t reg_addr, uint8_t *reg_data,
 
 void GFXDriver::off() { _gfx->fillScreen(BLACK); }
 
-void GFXDriver::drawColors(const std::vector<uint16_t> &colors) {}
+void GFXDriver::drawColors(const std::vector<uint16_t> &colors) {
+  static uint8_t cellWidth = 50;
+  static uint8_t spacing = 20;
+
+  int16_t totalWidth =
+      (colors.size() * cellWidth) + ((colors.size() - 1) * spacing);
+}
