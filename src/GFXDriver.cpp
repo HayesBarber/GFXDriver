@@ -29,8 +29,10 @@ void GFXDriver::init(void (*onTouch)()) {
   _gfx->setTextSize(4);
 }
 
-void GFXDriver::writeText(String text) {
-  _gfx->fillScreen(BLACK);
+void GFXDriver::writeText(String text) { writeText(text, MIDDLE_THIRD); }
+
+void GFXDriver::writeText(String text, Third third) {
+  clearThird(third);
   if (text.length() == 0) {
     return;
   }
@@ -39,8 +41,10 @@ void GFXDriver::writeText(String text) {
   uint16_t textWidth, textHeight;
   _gfx->getTextBounds(text, 0, 0, &x1, &y1, &textWidth, &textHeight);
 
+  ThirdCenter center = THIRD_CENTERS[third];
+
   int16_t x = (DISPLAY_WIDTH - textWidth) / 2;
-  int16_t y = (DISPLAY_HEIGHT / 2) - 15;
+  int16_t y = center.y;
 
   _gfx->setCursor(x, y);
   _gfx->println(text);

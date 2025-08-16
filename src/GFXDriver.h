@@ -29,6 +29,7 @@ public:
   GFXDriver();
   void init(void (*onTouch)());
   void writeText(String text);
+  void writeText(String text, Third third);
   void loop();
   void off();
   void drawColors(const std::vector<uint16_t> &colors);
