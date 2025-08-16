@@ -133,20 +133,22 @@ void GFXDriver::drawPowerSymbol() { drawPowerSymbol(LOWER_THIRD); }
 
 void GFXDriver::drawPowerSymbol(Third third) {
   clearThird(third);
-  static int16_t radius = 20;
-  static int16_t lineThickness = 4;
-  static int16_t circleThickness = radius - lineThickness;
-  static int16_t lineRadius = 1;
-  static int16_t padding = 16;
+  static int16_t outerCircleRadius = 20;
+  static int16_t stemThickness = 4;
+  static int16_t innerCircleRadius = outerCircleRadius - stemThickness;
+  static int16_t stemCornerRadius = 1;
+  static int16_t stemPadding = 16;
 
   ThirdCenter center = THIRD_CENTERS[third];
 
-  _gfx->fillCircle(center.x, center.y, radius, WHITE);
-  _gfx->fillCircle(center.x, center.y, circleThickness, BLACK);
+  _gfx->fillCircle(center.x, center.y, outerCircleRadius, WHITE);
+  _gfx->fillCircle(center.x, center.y, innerCircleRadius, BLACK);
 
-  _gfx->fillRect(center.x - ((lineThickness + padding) / 2),
-                 center.y - (radius + padding), lineThickness + padding,
-                 radius + padding, BLACK);
-  _gfx->fillRoundRect(center.x - (lineThickness / 2), center.y - (radius + 6),
-                      lineThickness, radius + 4, lineRadius, WHITE);
+  _gfx->fillRect(center.x - ((stemThickness + stemPadding) / 2),
+                 center.y - (outerCircleRadius + stemPadding),
+                 stemThickness + stemPadding, outerCircleRadius + stemPadding,
+                 BLACK);
+  _gfx->fillRoundRect(center.x - (stemThickness / 2),
+                      center.y - (outerCircleRadius + 6), stemThickness,
+                      outerCircleRadius + 4, stemCornerRadius, WHITE);
 }
