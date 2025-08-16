@@ -13,6 +13,17 @@
 
 enum Third { UPPER_THIRD, MIDDLE_THIRD, LOWER_THIRD };
 
+struct ThirdCenter {
+  uint16_t x;
+  uint16_t y;
+};
+
+static const ThirdCenter THIRD_CENTERS[] = {
+    {DISPLAY_WIDTH / 2, (DISPLAY_HEIGHT / 6)},    // UPPER_THIRD
+    {DISPLAY_WIDTH / 2, (DISPLAY_HEIGHT / 2)},    // MIDDLE_THIRD
+    {DISPLAY_WIDTH / 2, (DISPLAY_HEIGHT * 5) / 6} // LOWER_THIRD
+};
+
 class GFXDriver {
 public:
   GFXDriver();
