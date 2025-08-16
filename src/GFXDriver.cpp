@@ -136,7 +136,8 @@ void GFXDriver::drawPowerSymbol(Third third) {
   static int16_t radius = 20;
   static int16_t lineThickness = 4;
   static int16_t circleThickness = radius - lineThickness;
-  static int16_t padding = 8;
+  static int16_t lineRadius = 5;
+  static int16_t padding = 12;
 
   ThirdCenter center = THIRD_CENTERS[third];
 
@@ -146,4 +147,7 @@ void GFXDriver::drawPowerSymbol(Third third) {
   _gfx->fillRect(center.x - ((lineThickness + padding) / 2),
                  center.y - (radius + padding), lineThickness + padding,
                  radius + padding, BLACK);
+  _gfx->fillRoundRect(center.x - (lineThickness / 2),
+                      center.y - (radius + padding), lineThickness, radius,
+                      lineRadius, WHITE);
 }
