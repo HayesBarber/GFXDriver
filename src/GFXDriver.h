@@ -31,4 +31,5 @@ private:
 
   void i2cRead(uint16_t addr, uint8_t reg_addr, uint8_t *reg_data,
                uint32_t length);
+  void clearThird(Third third);
 };
