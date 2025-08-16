@@ -44,6 +44,8 @@ public:
   void init(void (*onTouch)());
   void writeText(String text);
   void writeText(String text, Third third);
+  void writeText(String text, TextSize size);
+  void writeText(String text, Third third, TextSize size);
   void loop();
   void off();
   void clearThird(Third third);
