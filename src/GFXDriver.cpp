@@ -136,13 +136,14 @@ void GFXDriver::drawPowerSymbol(Third third) {
   static int16_t radius = 20;
   static int16_t lineThickness = 4;
   static int16_t circleThickness = radius - lineThickness;
-  static int16_t padding = 4;
+  static int16_t padding = 8;
 
   ThirdCenter center = THIRD_CENTERS[third];
 
   _gfx->fillCircle(center.x, center.y, radius, WHITE);
   _gfx->fillCircle(center.x, center.y, circleThickness, BLACK);
 
-  _gfx->fillRect(center.x - ((lineThickness + padding) / 2), center.y,
-                 lineThickness + padding, radius + padding, BLACK);
+  _gfx->fillRect(center.x - ((lineThickness + padding) / 2),
+                 center.y - (radius + padding), lineThickness + padding,
+                 radius + padding, BLACK);
 }
