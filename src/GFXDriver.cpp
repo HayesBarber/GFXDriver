@@ -181,3 +181,19 @@ void GFXDriver::setTextSize(TextSize size) {
     break;
   }
 }
+
+TextSize GFXDriver::textSizeFromString(String s) {
+  s.toUpperCase();
+
+  if (s == "S") {
+    return S;
+  } else if (s == "M") {
+    return M;
+  } else if (s == "L") {
+    return L;
+  } else if (s == "XL") {
+    return XL;
+  }
+
+  return L;
+}

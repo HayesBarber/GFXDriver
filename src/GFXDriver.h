@@ -139,6 +139,17 @@ public:
    */
   void drawPowerSymbol(Third third);
 
+  /**
+   * @brief Converts a string to a TextSize enum value.
+   *
+   * Accepts case-insensitive values: "S", "M", "L", "XL".
+   * Defaults to L if the input string does not match.
+   *
+   * @param s The string representing the text size.
+   * @return The corresponding TextSize enum value.
+   */
+  TextSize textSizeFromString(String s);
+
 private:
   void (*_onTouch)();
   Arduino_DataBus *_bus;
