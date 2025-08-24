@@ -148,7 +148,7 @@ public:
    * @param s The string representing the text size.
    * @return The corresponding TextSize enum value.
    */
-  TextSize textSizeFromString(String s);
+  static TextSize textSizeFromString(String s);
 
 private:
   void (*_onTouch)();
